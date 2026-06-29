@@ -1,6 +1,26 @@
-
 services:
-  api:
-    BUILD .
+  main:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/src
+
   postgres:
-    image:postgres:18
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    #expose:
+    #  - "5432"
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d:ro
+
+volumes:
+  postgres_data:

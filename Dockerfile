@@ -4,8 +4,8 @@ WORKDIR /src
 
 COPY requirements.txt .
 
-RUN python3 install -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python3", "main.py"]
+CMD ["python", "src/main.py"]
