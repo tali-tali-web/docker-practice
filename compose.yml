@@ -1,0 +1,6 @@
+
+services:
+  api:
+    BUILD .
+  postgres:
+    image:postgres:18
