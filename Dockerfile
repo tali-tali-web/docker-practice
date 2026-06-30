@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["python", "src/main.py"]
+CMD ["uvicorn", "src.api:router", "--host", "0.0.0.0", "--port", "8000", "--reload"]
